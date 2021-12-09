@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class App {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
+        moreThenZeroer();
         fiftyFifter();
         qudraticer();
         circuler();
@@ -86,6 +87,17 @@ public class App {
         for (int i = 1, j = 1; j <= 55; i+=2, j++) {
             sb.append(i);
             if (j < 55) {
+                sb.append(" ");
+            }
+        }
+        System.out.println(sb);
+    }
+
+    public static void moreThenZeroer(){
+        StringBuilder sb = new StringBuilder();
+        for (int i = 90; i >= 0; i-=5) {
+            sb.append(i);
+            if (i > 0) {
                 sb.append(" ");
             }
         }
