@@ -4,15 +4,16 @@ import java.util.Scanner;
 public class App {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        qudraticer();
-        circuler();
-        godAssistant();
-        fiftyFifter();
-        moreThenZeroer();
-        nearTener();
-        minMaxInRandomArray();
-        multiplesNumsInHundred(14, 100);
-        severalDigsIn(10);
+        // qudraticer();
+        // circuler();
+        // godAssistant();
+        // fiftyFifter();
+        // moreThenZeroer();
+        // nearTener();
+        // minMaxInRandomArray();
+        // multiplesNumsInHundred(14, 100);
+        // severalDigsIn(10);
+        fibonachi(10);
 
         scanner.close();
     }
@@ -181,5 +182,16 @@ public class App {
             }
         }            
         pln("\n"+sb);
+    }
+
+    public static void fibonachi(int len) {
+        int a = 0;
+        int b = 1;
+        for (int i = 0; i < len; i++) {
+            int next = a+b;
+            p(i == 0 ? a : ", "+a);
+            a = b;
+            b = next;
+        }
     }
 }
