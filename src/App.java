@@ -10,6 +10,7 @@ public class App {
         fiftyFifter();
         moreThenZeroer();
         nearTener();
+        minMaxInRandomArray();
 
         scanner.close();
     }
@@ -18,14 +19,14 @@ public class App {
         try {
             return Double.parseDouble(s);
         } catch (NumberFormatException nfe) {
-            return Math.PI;
+            int i = (int) (Math.random()*10000);
+            return (double)i/100;
         }
     }
 
     public static String inputer(String message) {
         System.out.println(message);
-        String s = scanner.nextLine();
-        return s;
+        return scanner.nextLine();
     }
 
     public static void circuler(){
@@ -122,5 +123,25 @@ public class App {
             System.out.println(m);
         }
     }
-    
+
+    public static void minMaxInRandomArray(){
+        double [] arr = new double[(int) doubler("")];
+        double max = 0;
+        double min = Double.MAX_VALUE;
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = doubler("");
+            max = max>arr[i]?max:arr[i]; 
+            min = min<arr[i]?min:arr[i]; 
+            if (i>0) {
+                sb.append(", "+arr[i]);
+            }else {
+                sb.append(arr[i]);
+            }
+
+        }
+        System.out.println(sb);
+        System.out.println("max "+max);
+        System.out.println("min "+min);
+    }
 }
