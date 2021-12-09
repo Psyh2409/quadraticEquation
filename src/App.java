@@ -4,16 +4,17 @@ import java.util.Scanner;
 public class App {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        // qudraticer();
-        // circuler();
-        // godAssistant();
-        // fiftyFifter();
-        // moreThenZeroer();
-        // nearTener();
-        // minMaxInRandomArray();
-        // multiplesNumsInHundred(14, 100);
-        // severalDigsIn(10);
+        qudraticer();
+        circuler();
+        godAssistant();
+        fiftyFifter();
+        moreThenZeroer();
+        nearTener();
+        minMaxInRandomArray();
+        multiplesNumsInHundred(14, 100);
+        severalDigsIn(10);
         fibonachi(10);
+        pIntArr(arrSort(differences(10)));
 
         scanner.close();
     }
@@ -23,6 +24,20 @@ public class App {
     
     public static void p(Object o) {
         System.out.print(o);
+    }
+
+    public static void pDblArr(double[] d){
+        for (int i = 0; i < d.length; i++) {
+            p(i == 0 ? d[i] : ", "+d[i]);
+        }
+        pln("");
+    }
+
+    public static void pIntArr(int[] in){
+        for (int i = 0; i < in.length; i++) {
+            p(i == 0 ? in[i] : ", "+in[i]);
+        }
+        pln("");
     }
 
     public static double doubler(String s){
@@ -138,11 +153,15 @@ public class App {
         double [] arr = new double[(int) doubler("")];
         double max = 0;
         double min = Double.MAX_VALUE;
+        int imax = 0;
+        int imin = 0;
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < arr.length; i++) {
             arr[i] = doubler("");
             max = max>arr[i]?max:arr[i]; 
-            min = min<arr[i]?min:arr[i]; 
+            imax = max>arr[i]?imax:i; 
+            min = min<arr[i]?min:arr[i];
+            imin = min<arr[i]?imin:i; 
             if (i>0) {
                 sb.append(", "+arr[i]);
             }else {
@@ -151,8 +170,8 @@ public class App {
 
         }
         pln(sb);
-        pln("max "+max);
-        pln("min "+min);
+        pln("max "+max+" on index "+imax);
+        pln("min "+min+" on index "+imin);
     }
 
     public static void multiplesNumsInHundred(int num, int length){
@@ -193,5 +212,34 @@ public class App {
             a = b;
             b = next;
         }
+        pln("");
+    }
+
+    public static int[] differences(int len) {
+        int[] arr1 = new int[len];
+        int[] arr2 = new int[len];
+        int[] arr3 = new int[len];
+        for (int i = 0; i < arr3.length; i++) {
+            arr1[i] = (int)(Math.random()*10);
+            arr2[i] = (int)(Math.random()*10);
+            arr3[i] = arr1[i]-arr2[i];
+        }
+        pIntArr(arr1);
+        pIntArr(arr2);
+        return arr3;
+    }
+
+    public static int[] arrSort(int[] inarr) {
+        int a;
+        for (int i = 0; i+1 < inarr.length; ++i) { 
+            for (int j = 0; j+1 < inarr.length-i; ++j) {
+                if (inarr[j+1]<inarr[j]) {
+                    a=inarr[j+1];
+                    inarr[j+1] = inarr[j];
+                    inarr[j] = a;
+                }                
+            }
+        }
+        return inarr;
     }
 }
