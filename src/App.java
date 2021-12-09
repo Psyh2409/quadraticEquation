@@ -4,6 +4,7 @@ import java.util.Scanner;
 public class App {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
+        fiftyFifter();
         qudraticer();
         circuler();
         godAssistant();
@@ -39,6 +40,16 @@ public class App {
         }
     }
 
+    public enum DaysOfWeek{
+        SUNDAY,
+        MONDAY,
+        TUESDAY,
+        WEDNESDAY,
+        THURSDAY,
+        FRIDAY,
+        SATURDAY,
+    }
+
     public static void godAssistant() {
         String day = LocalDate.now().getDayOfWeek().name();
         System.out.println(day);
@@ -70,13 +81,16 @@ public class App {
         } 
     }
 
-    public enum DaysOfWeek{
-        SUNDAY,
-        MONDAY,
-        TUESDAY,
-        WEDNESDAY,
-        THURSDAY,
-        FRIDAY,
-        SATURDAY,
+    public static void fiftyFifter(){
+        StringBuilder sb = new StringBuilder();
+        for (int i = 1, j = 1; j <= 55; i+=2, j++) {
+            sb.append(i);
+            if (j < 55) {
+                sb.append(" ");
+            }
+        }
+        System.out.println(sb);
     }
+    
+    
 }
