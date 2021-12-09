@@ -4,13 +4,22 @@ import java.util.Scanner;
 public class App {
     static Scanner scanner = new Scanner(System.in);
     public static void main(String[] args) {
-        moreThenZeroer();
-        fiftyFifter();
         qudraticer();
         circuler();
         godAssistant();
+        fiftyFifter();
+        moreThenZeroer();
+        nearTener();
 
         scanner.close();
+    }
+
+    public static double doubler(String s){
+        try {
+            return Double.parseDouble(s);
+        } catch (NumberFormatException nfe) {
+            return Math.PI;
+        }
     }
 
     public static String inputer(String message) {
@@ -20,15 +29,15 @@ public class App {
     }
 
     public static void circuler(){
-        double radius = Double.parseDouble(inputer("Enter radius:"));
+        double radius = doubler(inputer("Enter radius:"));
         System.out.println("Area of circle is "+Math.PI*Math.pow(radius, 2));
         System.out.println("Length of circle is "+2*Math.PI*radius);
     }
 
     public static void qudraticer() {
-        double a = Double.parseDouble(inputer("Enter the first number:")); 
-        double b = Double.parseDouble(inputer("Enter the second number:"));
-        double c = Double.parseDouble(inputer("Enter the third number:"));
+        double a = doubler(inputer("Enter the first number:")); 
+        double b = doubler(inputer("Enter the second number:"));
+        double c = doubler(inputer("Enter the third number:"));
         double d = Math.pow(b, 2)-4*a*c;
         double x1 = ((b*-1) + Math.sqrt(d))/2*a;
         double x2 = ((b*-1) - Math.sqrt(d))/2*a;
@@ -104,5 +113,14 @@ public class App {
         System.out.println(sb);
     }
     
+    public static void nearTener(){
+        double n = doubler(inputer("Enter the first number:"));
+        double m = doubler(inputer("Enter the second number:"));
+        if (Math.abs(n-10) < Math.abs(m-10)) {
+            System.out.println(n);
+        }else{
+            System.out.println(m);
+        }
+    }
     
 }
