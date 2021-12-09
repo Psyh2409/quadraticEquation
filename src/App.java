@@ -11,8 +11,17 @@ public class App {
         moreThenZeroer();
         nearTener();
         minMaxInRandomArray();
+        multiplesNumsInHundred(14, 100);
+        severalDigsIn(10);
 
         scanner.close();
+    }
+    public static void pln(Object o) {
+        System.out.println(o);
+    }
+    
+    public static void p(Object o) {
+        System.out.print(o);
     }
 
     public static double doubler(String s){
@@ -25,14 +34,14 @@ public class App {
     }
 
     public static String inputer(String message) {
-        System.out.println(message);
+        pln(message);
         return scanner.nextLine();
     }
 
     public static void circuler(){
         double radius = doubler(inputer("Enter radius:"));
-        System.out.println("Area of circle is "+Math.PI*Math.pow(radius, 2));
-        System.out.println("Length of circle is "+2*Math.PI*radius);
+        pln("Area of circle is "+Math.PI*Math.pow(radius, 2));
+        pln("Length of circle is "+2*Math.PI*radius);
     }
 
     public static void qudraticer() {
@@ -43,11 +52,11 @@ public class App {
         double x1 = ((b*-1) + Math.sqrt(d))/2*a;
         double x2 = ((b*-1) - Math.sqrt(d))/2*a;
         if(Double.isNaN(x1) && Double.isNaN(x2)){
-            System.out.println(
+            pln(
                 "Equation '"+a+"x^2 + "+b+"x + "+c+" = 0' has no solution.");
         }else {
-            System.out.println("X1 = " + x1);
-            System.out.println("X2 = " + x2);
+            pln("X1 = " + x1);
+            pln("X2 = " + x2);
         }
     }
 
@@ -63,31 +72,31 @@ public class App {
 
     public static void godAssistant() {
         String day = LocalDate.now().getDayOfWeek().name();
-        System.out.println(day);
+        pln(day);
         switch (DaysOfWeek.valueOf(day)) {
             case MONDAY:
-                System.out.println("God created light and separated the light from the darkness, calling light day and darkness night.");
+                pln("God created light and separated the light from the darkness, calling light day and darkness night.");
                 break;
             case TUESDAY:
-                System.out.println("God created an expanse to separate the waters and called it sky.");
+                pln("God created an expanse to separate the waters and called it sky.");
                 break;
             case WEDNESDAY: 
-                System.out.println("God created the dry ground and gathered the waters, calling the dry ground land, and the gathered waters seas. On day three, God also created vegetation (plants and trees).");
+                pln("God created the dry ground and gathered the waters, calling the dry ground land, and the gathered waters seas. On day three, God also created vegetation (plants and trees).");
                 break;
             case THURSDAY:
-                System.out.println("God created the sun, moon, and the stars to give light to the earth and to govern and separate the day and the night. These would also serve as signs to mark seasons, days, and years.");
+                pln("God created the sun, moon, and the stars to give light to the earth and to govern and separate the day and the night. These would also serve as signs to mark seasons, days, and years.");
                 break;
             case FRIDAY:
-                System.out.println("God created every living creature of the seas and every winged bird, blessing them to multiply and fill the waters and the sky with life.");
+                pln("God created every living creature of the seas and every winged bird, blessing them to multiply and fill the waters and the sky with life.");
                 break;
             case SATURDAY:
-                System.out.println("God created the animals to fill the earth. On day six, God also created man and woman (Adam and Eve) in his own image to commune with him. He blessed them and gave them every creature and the whole earth to rule over, care for, and cultivate.");
+                pln("God created the animals to fill the earth. On day six, God also created man and woman (Adam and Eve) in his own image to commune with him. He blessed them and gave them every creature and the whole earth to rule over, care for, and cultivate.");
                 break;
             case SUNDAY:
-                System.out.println("God had finished his work of creation and so he rested on the seventh day, blessing it and making it holy.");
+                pln("God had finished his work of creation and so he rested on the seventh day, blessing it and making it holy.");
                 break;
                 default:
-                System.out.println("What kind of god are you if seven days are not enough for you to create the world?! Loooser!");
+                pln("What kind of god are you if seven days are not enough for you to create the world?! Loooser!");
                 break;
         } 
     }
@@ -100,7 +109,7 @@ public class App {
                 sb.append(" ");
             }
         }
-        System.out.println(sb);
+        pln(sb);
     }
 
     public static void moreThenZeroer(){
@@ -111,16 +120,16 @@ public class App {
                 sb.append(" ");
             }
         }
-        System.out.println(sb);
+        pln(sb);
     }
     
     public static void nearTener(){
         double n = doubler(inputer("Enter the first number:"));
         double m = doubler(inputer("Enter the second number:"));
         if (Math.abs(n-10) < Math.abs(m-10)) {
-            System.out.println(n);
+            pln(n);
         }else{
-            System.out.println(m);
+            pln(m);
         }
     }
 
@@ -140,8 +149,37 @@ public class App {
             }
 
         }
-        System.out.println(sb);
-        System.out.println("max "+max);
-        System.out.println("min "+min);
+        pln(sb);
+        pln("max "+max);
+        pln("min "+min);
+    }
+
+    public static void multiplesNumsInHundred(int num, int length){
+        int [] arr = new int[length];
+        StringBuilder sb = new StringBuilder();
+        for (int i = 1; i <= arr.length; i++) {
+            arr[i-1] = i;
+            if (i%num == 0) {
+                sb.append(i == num ? num : ", " + i);
+            }
+        }
+        pln(sb);
+    }
+
+    public static void severalDigsIn(int len) {
+        int[] arr = new int[len];
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < arr.length; i++) {
+            int dig = (int) (Math.random()*10);
+            arr[i] = dig;
+            p(i==0? dig : ", "+dig);
+            for (int j = 0; j < i; j++) {
+                if (arr[j] == arr[i]) {
+                    if (sb.indexOf(""+dig)==-1)
+                    sb.append(sb.length()==0 ? dig : ", "+dig);
+                }
+            }
+        }            
+        pln("\n"+sb);
     }
 }
